@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title></title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            background-color: #000000;
+            min-height: 100vh;
+            overflow: hidden;
+        }
+        
+        .image-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100vh;
+            background-color: #000000;
+            opacity: 0;
+            animation: fadeIn 1s ease-out forwards;
+        }
+        
+        .image-container::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: url('https://raw.githubusercontent.com/dzibiz/studio/refs/heads/main/intro.webp');
+            background-repeat: no-repeat;
+            background-position: center center;
+            background-size: contain;
+            -webkit-animation: scale-up-center 1s ease-out forwards;
+            animation: scale-up-center 1s ease-out forwards;
+        }
+        
+        @-webkit-keyframes scale-up-center {
+            0% {
+                -webkit-transform: scale(.5);
+                transform: scale(.5);
+            }
+            100% {
+                -webkit-transform: scale(1);
+                transform: scale(1);
+            }
+        }
+        
+        @keyframes scale-up-center {
+            0% {
+                -webkit-transform: scale(.5);
+                transform: scale(.5);
+            }
+            100% {
+                -webkit-transform: scale(1);
+                transform: scale(1);
+            }
+        }
+        
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+        
+        /* Мобильная версия */
+        @media (max-width: 640px) {
+            .image-container::before {
+                background-image: url('https://raw.githubusercontent.com/dzibiz/studio/refs/heads/main/intromob.webp');
+                left: 30px;
+                width: calc(100% - 60px);
+            }
+        }
+        
+        /* Десктопная версия */
+        @media (min-width: 641px) {
+            .image-container::before {
+                background-image: url('https://raw.githubusercontent.com/dzibiz/studio/refs/heads/main/intro.webp');
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="image-container"></div>
+</body>
+</html>
